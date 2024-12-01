@@ -1,9 +1,11 @@
-import { createServer } from "node:http";
+import http from "node:http";
+import fs from "node:fs";
+import path from "node:path";
 import { env } from "./config/env.js";
 
-const server = createServer((_request, response) => {
-  response.writeHead(200, { 'content-type': 'application/json' });
-  response.end(JSON.stringify({ message: "ping" }));
+const server = http.createServer((_request, response) => {
+  response.writeHead(200, { 'content-type': 'text/html' });
+  response.end(fs.readFileSync(path.join("./", "src", "views", "index.html"), "utf8"));
 });
 
 server.listen(env.SERVER_PORT, 'localhost', () => {
