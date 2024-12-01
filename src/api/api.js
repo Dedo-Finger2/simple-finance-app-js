@@ -1,11 +1,9 @@
 import http from "node:http";
-import fs from "node:fs";
-import path from "node:path";
+import { home } from "./routes/home.route.js";
 
 export function bootstrap() {
   const server = http.createServer((_request, response) => {
-    response.writeHead(200, { 'content-type': 'text/html' });
-    response.end(fs.readFileSync(path.join("./", "src", "views", "index.html"), "utf8"));
+    home(_request, response);
   });
 
   return server;
