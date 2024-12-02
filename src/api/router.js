@@ -12,6 +12,10 @@ export function get(uri, handler) {
   routes.push({ uri, handler, method: "GET" });
 }
 
+export function post(uri, handler) {
+  routes.push({ uri, handler, method: "POST" });
+}
+
 export function handle(request, response) {
   for (const route of routes) {
     if (request.url === route.uri && request.method === route.method) return route.handler(request, response);
