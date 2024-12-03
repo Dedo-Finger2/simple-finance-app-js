@@ -6,7 +6,7 @@ import { registerValue } from "./routes/register-value.route.js";
 export function bootstrap() {
   const server = http.createServer((request, response) => {
     router.get("/", home);
-    router.post("/values", registerValue);
+    router.post("/", registerValue);
 
     router.handle(request, response);
   });
